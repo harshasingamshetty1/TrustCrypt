@@ -1,0 +1,24 @@
+{
+  "name": "Vite React Chrome Extension",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "permissions": ["tabs", "activeTab", "storage", "scripting"],
+  "content_scripts": [
+    {
+      "js": ["content_scripts.js"],
+      "run_at": "document_end",
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "action": {
+    "default_popup": "index.html"
+  },
+  "externally_connectable": {
+    "matches": ["https://metamask.io/*"],
+    "ids": ["*"]
+  }
+}
